@@ -15,7 +15,7 @@ import android.widget.Button;
 
 public class MainActivity extends Activity {
 
-    public static final int NOTIFICATION_ID = 123;
+    public static final int NOTIFICATION_ID = 12345;
 
     private Button btnCreateNotification;
 
@@ -31,7 +31,7 @@ public class MainActivity extends Activity {
     private class CreateOnClick implements View.OnClickListener {
         @Override
         public void onClick(View v) {
-            String msg = "Click me";
+            String msg = "Click me!";
 
             NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
@@ -49,10 +49,11 @@ public class MainActivity extends Activity {
                     .setContentTitle(getString(R.string.app_name))
                     .setContentText(msg)
                     .setAutoCancel(true)
+                    .setContentIntent(contentIntent)
                     .setLights(Color.argb(255, 54, 211, 249), 300, 300)
+//                    .setVibrate(new long[] { 1000, 1000, 1000, 1000, 1000 })
                     .setDefaults(Notification.DEFAULT_SOUND | Notification.DEFAULT_VIBRATE);
 
-            mBuilder.setContentIntent(contentIntent);
             mNotificationManager.notify(NOTIFICATION_ID, mBuilder.getNotification());
         }
     }
